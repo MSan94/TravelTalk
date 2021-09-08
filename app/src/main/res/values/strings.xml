@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TravelTalk</string>
+
+    <!-- 로그인 -->
+    <string name="btn_Login">로그인</string>
+    <string name="btn_Join">회원가입</string>
+    <string name="btn_Guest">둘러보기</string>
+
+</resources>
