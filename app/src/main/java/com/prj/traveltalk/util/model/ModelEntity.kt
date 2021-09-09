@@ -1,15 +1,24 @@
 package com.prj.traveltalk.util.model
 
+import com.google.gson.annotations.SerializedName
+
 data class ModelEntity(
-    val ulsanstayEntId : String, // 고유번호
-    val ulsanstayTitle : String, // 이름
-    val ulsanstayType : String, // 카테고리
-    val ulsanstayNewAddr : String, // 주소
-    val ulsanstayTel : String, // 전화번호
-    val ulsanstayHP : String, // 홈페이지
-    val ulsanstayParking : String, // 주차장 보유 여부
-    val ulsanstayRoom : String, // 방 개수
-    val ulsanstayXpos : String, // 경도
-    val ulsanstayYpos : String, // 위도
-    val ulsanstayPrice : String, // 가격
+    @SerializedName("data_title") val data_title : String, // 상호명
+    @SerializedName("category_name1") val category_name1 : String, // 숙박유형
+    @SerializedName("category_name3") val category_name3 : String, // 시군구명
+    @SerializedName("data_content") val data_content : String, // 내용
+    @SerializedName("user_address") val user_address : String, // 주소
+    @SerializedName("telno") val telno : String, // 연락처
+    @SerializedName("lattitude") val lattitude : String, // 위도
+    @SerializedName("logitude") val logitude : String, // 경도
+    @SerializedName("roominfo") val roominfo : String, // 객실정보
+    @SerializedName("parkinginfo") val parkinginfo : String, // 주차정보
+    @SerializedName("trafficinfo") val trafficinfo : String, // 교통편
+    @SerializedName("user_homepage") val user_homepage : String, // 홈페이지 주소
+    @SerializedName("fileurl1") val fileurl1 : String, // 파일1
+    @SerializedName("fileurl2") val fileurl2 : String, // 파일2
+    @SerializedName("fileurl3") val fileurl3 : String, // 파일3
+    @SerializedName("fileurl4") val fileurl4 : String, // 파일4
+    @SerializedName("fileurl5") val fileurl5 : String, // 파일5
+
 )
