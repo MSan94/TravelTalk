@@ -3,6 +3,7 @@ package com.prj.traveltalk.util.retrofit
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.prj.traveltalk.BuildConfig
+import com.prj.traveltalk.util.PropertiesData
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -11,7 +12,7 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 
 object RetrofitObject {
-    private val baseUrl = "http://apis.data.go.kr/"
+    private val baseUrl = PropertiesData.BASE_URL
 
     private fun createOkHttpClient() : OkHttpClient{
        val interceptor = HttpLoggingInterceptor()

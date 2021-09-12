@@ -2,6 +2,7 @@ package com.prj.traveltalk.presenter
 
 import android.util.Log
 import com.prj.traveltalk.contract.MainContract
+import com.prj.traveltalk.util.PropertiesData
 import com.prj.traveltalk.util.model.ModelItem
 import com.prj.traveltalk.util.model.Motel
 import com.prj.traveltalk.util.model.modelGyeongnamlodgeinfolist
@@ -35,7 +36,7 @@ class MainPresenter : MainContract.Presenter, CoroutineScope {
         launch(Dispatchers.IO) {
             Log.d(TAG_COROUTINE, "코루틴 실행")
 //
-            val responseService = apiService.getEntitys(URLDecoder.decode("aAYj%2B%2FxzbnIufpdEs6pPdTu7H0Tbve6sEljLAwKe5T4JufmD2S5Rom7CezaN4qeI9GTWGkH7mL%2FpjiFj9Bb5aA%3D%3D"),"10","2")
+            val responseService = apiService.getEntitys(URLDecoder.decode(PropertiesData.SERVICE_KEY),"10","2")
             withContext(Dispatchers.Main){
                 _motelList = responseService.gyeongnamlodgeinfolist.modelItem
                 Log.d(TAG_COROUTINE, "사이즈 : ${_motelList?.size}")

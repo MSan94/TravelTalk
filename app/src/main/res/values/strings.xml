@@ -6,4 +6,9 @@
     <string name="btn_Join">회원가입</string>
     <string name="btn_Guest">둘러보기</string>
 
+    <!-- Bottom Menu -->
+    <string name="home">홈</string>
+    <string name="info">정보공유</string>
+    <string name="my">내정보</string>
+
 </resources>
