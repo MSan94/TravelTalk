@@ -17,6 +17,7 @@ import com.prj.traveltalk.util.adapter.ModelAdapter
 import com.prj.traveltalk.util.model.ModelItem
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import kotlin.concurrent.thread
 
 class HomeFragment() : Fragment() , HomeContract.View{
 
@@ -32,9 +33,8 @@ class HomeFragment() : Fragment() , HomeContract.View{
         presenter = HomePresenter()
         presenter.setView(this)
         presenter.setJob()
-        presenter.getData()
-
-        Log.d("TestSize", "프래그먼트 : ${modelList.size}")
+        getData()
+        initRecyclerView()
 
         return binding.root
     }
@@ -45,21 +45,20 @@ class HomeFragment() : Fragment() , HomeContract.View{
 
     override fun initRecyclerView() {
         val adapter = ModelAdapter()
-        adapter.listData = modelList!!
-        binding.recyclerView.adapter = adapter
-        binding.recyclerView.layoutManager = LinearLayoutManager(context)
+        adapter.listData = modelList
+        thread(start = true) {
+            binding.recyclerView.adapter = adapter
+            binding.recyclerView.layoutManager = LinearLayoutManager(context)
+        }
     }
 
-    override fun getModelData() {
-//        _motelList = presenter.sendData()
-    }
-
-    override fun getData() = runBlocking {
+    override fun getData(): Unit = runBlocking {
         val job = launch {
             presenter.getData()
         }
         job.join()
         job.cancel()
+        modelList = presenter.returnList()
     }
 
 

@@ -8,10 +8,7 @@ interface HomeContract {
 
     interface View : BaseView<Presenter> {
         fun initRecyclerView()
-        fun getModelData()
-
         fun getData()
-
     }
 
     interface Presenter : BasePresenter{
@@ -19,6 +16,8 @@ interface HomeContract {
         fun getData()
         fun setJob()
         fun cancelJob()
+
+        fun returnList() : MutableList<ModelItem>
 
     }
 

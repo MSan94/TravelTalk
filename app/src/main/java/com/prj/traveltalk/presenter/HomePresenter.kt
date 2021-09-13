@@ -38,7 +38,8 @@ class HomePresenter : HomeContract.Presenter , CoroutineScope {
         job.cancel()
     }
 
-    override fun getData(){
+
+    override fun getData() = runBlocking {
 
         val job = launch() {
             Log.d(TAG_COROUTINE, "코루틴 실행")
@@ -53,13 +54,14 @@ class HomePresenter : HomeContract.Presenter , CoroutineScope {
                     Log.d("TestData", modelList!![i].toString())
                 }
         }
-
+        job.join()
+        job.cancel()
     }
 
-//    override fun sendData() : MutableList<ModelItem>{
-//        return modelList
-//    }
 
+    override fun returnList() : MutableList<ModelItem> {
+        return modelList
+    }
 
     companion object{
         private const val TAG_COROUTINE = "CoroutineTest"
