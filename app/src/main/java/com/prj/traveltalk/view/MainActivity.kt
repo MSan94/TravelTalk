@@ -33,8 +33,7 @@ class MainActivity() : AppCompatActivity() , MainContract.View{
         init()
         presenter = MainPresenter()
         presenter.setView(this)
-        presenter.setJob()
-        presenter.getData()
+
 
         bottomNavigationView.setOnNavigationItemSelectedListener {
             when(it.itemId){
@@ -59,7 +58,6 @@ class MainActivity() : AppCompatActivity() , MainContract.View{
 
     override fun onDestroy() {
         super.onDestroy()
-        presenter.cancelJob()
     }
 
     private fun replaceFragment(fragment: Fragment) {

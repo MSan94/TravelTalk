@@ -6,7 +6,7 @@ data class Motel(val gyeongnamlodgeinfolist : modelGyeongnamlodgeinfolist)
 
 data class modelGyeongnamlodgeinfolist(
     @SerializedName("item")
-    val modelItem : MutableList<ModelItem>?,
+    val modelItem : MutableList<ModelItem>,
     val numOfRows : Int,
     val pageNo : Int,
     val totalCount : Int
@@ -31,3 +31,4 @@ data class ModelItem(
     @SerializedName("fileurl4") val fileurl4 : String, // 파일4
     @SerializedName("fileurl5") val fileurl5 : String, // 파일5
 )
+

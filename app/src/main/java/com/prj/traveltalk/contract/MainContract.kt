@@ -12,9 +12,6 @@ interface MainContract {
 
     interface Presenter : BasePresenter{
         fun setView(view : MainContract.View)
-        fun setJob()
-        fun cancelJob()
-        fun getData()
     }
 
 }
