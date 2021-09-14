@@ -13,11 +13,11 @@ interface HomeContract {
 
     interface Presenter : BasePresenter{
         fun setView(view : HomeContract.View)
-        fun getData()
-        fun setJob()
-        fun cancelJob()
+        fun getData() // 레트로핏 데이터 파싱
+        fun setJob() // 잡 설정
+        fun cancelJob()  // 잡 취소
 
-        fun returnList() : MutableList<ModelItem>
+        fun returnList() : MutableList<ModelItem> // 리스트 반환
 
     }
 

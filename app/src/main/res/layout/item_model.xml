@@ -18,23 +18,40 @@
             android:text="업소이름"
             android:textSize="14dp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/textView_category_name1"
+            app:layout_constraintBottom_toTopOf="@+id/constraint_Mid"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView_category_name1"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:text="구분 : 민박"
-            android:textStyle="bold"
+            android:id="@+id/constraint_Mid"
             app:layout_constraintBottom_toTopOf="@+id/textView_category_name3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_data_title" />
+            app:layout_constraintTop_toBottomOf="@+id/textView_data_title">
+            <TextView
+                android:id="@+id/textView_category_name1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="구분 : 민박"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imageView_Jjim"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:src="@drawable/non_select_star"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/textView_category_name3"
@@ -47,7 +64,7 @@
             app:layout_constraintBottom_toTopOf="@+id/textView_telno"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_category_name1" />
+            app:layout_constraintTop_toBottomOf="@+id/constraint_Mid" />
 
         <TextView
             android:id="@+id/textView_telno"
@@ -81,6 +98,13 @@
             android:background="@color/black"
             android:layout_width="match_parent"
             android:layout_height="1dp"/>
+        <TextView
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/jjin_Value"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </LinearLayout>

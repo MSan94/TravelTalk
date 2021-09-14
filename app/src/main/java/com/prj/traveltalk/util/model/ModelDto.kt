@@ -20,4 +20,5 @@ data class ModelDto(
     val fileurl3 : String, // 파일3
     val fileurl4 : String, // 파일4
     val fileurl5 : String, // 파일5
+
 )

@@ -46,18 +46,16 @@ class HomeFragment() : Fragment() , HomeContract.View{
     override fun initRecyclerView() {
         val adapter = ModelAdapter()
         adapter.listData = modelList
+        Log.d("TestView", "들어옴")
         thread(start = true) {
             binding.recyclerView.adapter = adapter
             binding.recyclerView.layoutManager = LinearLayoutManager(context)
         }
     }
 
-    override fun getData(): Unit = runBlocking {
-        val job = launch {
-            presenter.getData()
-        }
-        job.join()
-        job.cancel()
+    override fun getData() {
+        presenter.getData()
+        Log.d("TestView", "끝남")
         modelList = presenter.returnList()
     }
 

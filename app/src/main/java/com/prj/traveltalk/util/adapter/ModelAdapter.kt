@@ -1,10 +1,13 @@
 package com.prj.traveltalk.util.adapter
 
 import android.content.Context
+import android.graphics.drawable.Drawable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.view.drawToBitmap
 import androidx.recyclerview.widget.RecyclerView
 import com.prj.traveltalk.R
 import com.prj.traveltalk.databinding.ItemModelBinding
@@ -36,5 +39,7 @@ class Holder(val binding : ItemModelBinding) : RecyclerView.ViewHolder(binding.r
         binding.textViewCategoryName3.text = data.category_name3
         binding.textViewTelno.text = data.telno
         binding.textViewUserAddress.text = data.user_address
+
+
     }
 }

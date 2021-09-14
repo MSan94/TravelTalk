@@ -24,7 +24,6 @@ class MainActivity() : AppCompatActivity() , MainContract.View{
     private val infoFragment = InfoFragment()
     private val myFragment = MyFragment()
     lateinit var bottomNavigationView : BottomNavigationView
-//    = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,7 +33,7 @@ class MainActivity() : AppCompatActivity() , MainContract.View{
         presenter = MainPresenter()
         presenter.setView(this)
 
-
+        /** 바텀메뉴 선택 이벤트 **/
         bottomNavigationView.setOnNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.home -> {
@@ -51,6 +50,8 @@ class MainActivity() : AppCompatActivity() , MainContract.View{
         }
 
     }
+
+    /** 프래그먼트 초기화 **/
     override fun init() {
         bottomNavigationView = binding.bottomNavigationView
         replaceFragment(homeFragment)
@@ -60,8 +61,8 @@ class MainActivity() : AppCompatActivity() , MainContract.View{
         super.onDestroy()
     }
 
+    /** 프래그먼트 전환 **/
     private fun replaceFragment(fragment: Fragment) {
-        // 트랜잭션 작업 설정
         supportFragmentManager.beginTransaction()
             .apply {
                 replace(R.id.fragmentContainer, fragment)

@@ -19,10 +19,8 @@ class HomePresenter : HomeContract.Presenter , CoroutineScope {
     override val coroutineContext : CoroutineContext
         get() = Dispatchers.Main + job
 
-//    private var _motelList : List<ModelItem>? = null
     lateinit var modelList : MutableList<ModelItem>
     private var view : HomeContract.View? = null
-    lateinit var modelAdapter : ModelAdapter
 
 
     override fun setView(view: HomeContract.View) {
@@ -39,26 +37,26 @@ class HomePresenter : HomeContract.Presenter , CoroutineScope {
     }
 
 
+    /** 레트로핏 정보 파싱 **/
     override fun getData() = runBlocking {
-
+        Log.d("coroutineTest", "시작")
         val job = launch() {
             Log.d(TAG_COROUTINE, "코루틴 실행")
 //
+            Log.d("coroutineTest", "중간1")
             val responseService = RetrofitObject.apiService.getEntitys(
                 URLDecoder.decode(PropertiesData.SERVICE_KEY),"10","1")
+            Log.d("coroutineTest", "중간2")
                 modelList = responseService.gyeongnamlodgeinfolist.modelItem
-                Log.d("TestInit", "${modelList.size}")
-                Log.d(TAG_COROUTINE, "사이즈1 : ${modelList?.size}")
-                Log.d("ModelTest", modelList?.size.toString())
-                for(i in modelList?.indices!!){
-                    Log.d("TestData", modelList!![i].toString())
-                }
+            Log.d("coroutineTest", "중간3")
         }
         job.join()
+        Log.d("coroutineTest", "끝")
         job.cancel()
     }
 
 
+    /** 리스트 반환 **/
     override fun returnList() : MutableList<ModelItem> {
         return modelList
     }
