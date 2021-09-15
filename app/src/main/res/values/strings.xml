@@ -11,4 +11,7 @@
     <string name="info">정보공유</string>
     <string name="my">내정보</string>
 
+    <!-- HomeFragment -->
+    <string name="selectCategory">카테고리를 선택해주세요.</string>
+
 </resources>

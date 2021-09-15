@@ -8,6 +8,8 @@ import androidx.appcompat.widget.AppCompatButton
 import com.prj.traveltalk.contract.LoginContract
 import com.prj.traveltalk.databinding.ActivityLoginBinding
 import com.prj.traveltalk.presenter.LoginPresenter
+import com.prj.traveltalk.util.adapter.MapKey
+import com.prj.traveltalk.view.dialog.DetailFragmentDialog
 
 class LoginActivity : AppCompatActivity(), LoginContract.View{
     val binding by lazy { ActivityLoginBinding.inflate(layoutInflater) }
@@ -19,7 +21,11 @@ class LoginActivity : AppCompatActivity(), LoginContract.View{
         presenter = LoginPresenter()
         presenter.setView(this)
         init()
-
+//        val intent : Intent = Intent(this, MapKey::class.java)
+//        startActivity(intent)
+        DetailFragmentDialog().show(
+            supportFragmentManager, "SampleDialog"
+        )
     }
 
     override fun init() {

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.prj.traveltalk">
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,6 +12,11 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.TravelTalk">
+
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="f5a297013d52460d548c09e221135743"/>
+
         <activity android:name=".view.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,6 +26,7 @@
         </activity>
         <activity android:name=".view.MainActivity">
         </activity>
+        <activity android:name=".util.adapter.MapKey"/>
     </application>
 
 </manifest>

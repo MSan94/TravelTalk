@@ -1,6 +1,8 @@
 package com.prj.traveltalk.view.fragment
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,13 +15,16 @@ import com.prj.traveltalk.contract.LoginContract
 import com.prj.traveltalk.databinding.FragmentHomeBinding
 import com.prj.traveltalk.presenter.HomePresenter
 import com.prj.traveltalk.presenter.LoginPresenter
+import com.prj.traveltalk.util.`interface`.OnItemClick
 import com.prj.traveltalk.util.adapter.ModelAdapter
 import com.prj.traveltalk.util.model.ModelItem
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import java.util.*
 import kotlin.concurrent.thread
 
-class HomeFragment() : Fragment() , HomeContract.View{
+class HomeFragment() : Fragment() , HomeContract.View, OnItemClick{
+
 
     override lateinit var presenter: HomeContract.Presenter
     val binding by lazy { FragmentHomeBinding.inflate(layoutInflater)}
@@ -36,6 +41,12 @@ class HomeFragment() : Fragment() , HomeContract.View{
         getData()
         initRecyclerView()
 
+        binding.btnSelect.setOnClickListener {
+            Log.d("DialogTest","클릭")
+            getCategoryList()
+        }
+
+
         return binding.root
     }
 
@@ -46,7 +57,6 @@ class HomeFragment() : Fragment() , HomeContract.View{
     override fun initRecyclerView() {
         val adapter = ModelAdapter()
         adapter.listData = modelList
-        Log.d("TestView", "들어옴")
         thread(start = true) {
             binding.recyclerView.adapter = adapter
             binding.recyclerView.layoutManager = LinearLayoutManager(context)
@@ -59,10 +69,22 @@ class HomeFragment() : Fragment() , HomeContract.View{
         modelList = presenter.returnList()
     }
 
-
-    override fun onDestroy() {
-        super.onDestroy()
-        presenter.cancelJob()
+    fun getCategoryList(){
+        var dataArr = arrayOf("전체","민박","펜션","호텔")
+        var builder = AlertDialog.Builder(context)
+        builder.setTitle("카테고리를 선택해주세요.")
+        builder.setNegativeButton("취소", null)
+        var listener = DialogInterface.OnClickListener { _, which ->
+            binding.btnSelect.text = "${dataArr[which]}"
+        }
+        builder.setItems(dataArr, listener)
+        builder.show()
     }
+
+    /** 어댑터 아이템 클릭시 호출 이벤트트 **/
+    override fun onClick(value: String) {
+//        Log.d("TestString", "받은값 : $value")
+    }
+
 
 }

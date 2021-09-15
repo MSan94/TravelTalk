@@ -11,11 +11,13 @@ import androidx.core.view.drawToBitmap
 import androidx.recyclerview.widget.RecyclerView
 import com.prj.traveltalk.R
 import com.prj.traveltalk.databinding.ItemModelBinding
+import com.prj.traveltalk.util.`interface`.OnItemClick
 import com.prj.traveltalk.util.model.ModelItem
+import com.prj.traveltalk.view.dialog.DetailFragmentDialog
 
 class ModelAdapter() : RecyclerView.Adapter<Holder>(){
-
     var listData = mutableListOf<ModelItem>()
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val binding = ItemModelBinding.inflate(LayoutInflater.from(parent.context),parent,false)
@@ -40,6 +42,12 @@ class Holder(val binding : ItemModelBinding) : RecyclerView.ViewHolder(binding.r
         binding.textViewTelno.text = data.telno
         binding.textViewUserAddress.text = data.user_address
 
+        binding.imageViewJjim.setOnClickListener {
+            binding.imageViewJjim.setImageResource(R.drawable.select_star)
+        }
+
+        binding.constraintLeft.setOnClickListener {
+        }
 
     }
 }
