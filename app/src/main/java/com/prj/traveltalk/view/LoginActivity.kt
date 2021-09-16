@@ -1,15 +1,16 @@
 package com.prj.traveltalk.view
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatButton
+import androidx.fragment.app.DialogFragment
+import com.prj.traveltalk.R
 import com.prj.traveltalk.contract.LoginContract
 import com.prj.traveltalk.databinding.ActivityLoginBinding
 import com.prj.traveltalk.presenter.LoginPresenter
-import com.prj.traveltalk.util.adapter.MapKey
 import com.prj.traveltalk.view.dialog.DetailFragmentDialog
+
 
 class LoginActivity : AppCompatActivity(), LoginContract.View{
     val binding by lazy { ActivityLoginBinding.inflate(layoutInflater) }
@@ -21,11 +22,11 @@ class LoginActivity : AppCompatActivity(), LoginContract.View{
         presenter = LoginPresenter()
         presenter.setView(this)
         init()
-//        val intent : Intent = Intent(this, MapKey::class.java)
-//        startActivity(intent)
-        DetailFragmentDialog().show(
-            supportFragmentManager, "SampleDialog"
-        )
+
+    }
+
+    override fun onResume() {
+        super.onResume()
     }
 
     override fun init() {
@@ -35,16 +36,24 @@ class LoginActivity : AppCompatActivity(), LoginContract.View{
     }
 
 
-    fun btnClickEvent(type : Int){
+    private fun btnClickEvent(type: Int){
         when(type){
+            1 -> {
+                val intent = Intent(this, JoinActivity::class.java)
+                goActivity(intent)
+            }
             2 -> {
                 presenter.checkUser()
             }
-            3 ->{
-                val intent = Intent(this,MainActivity::class.java)
-                startActivity(intent)
+            3 -> {
+                val intent = Intent(this, MainActivity::class.java)
+                goActivity(intent)
             }
         }
+    }
+
+    fun goActivity(intent : Intent){
+        startActivity(intent)
     }
 
 }

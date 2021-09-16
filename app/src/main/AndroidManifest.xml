@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.prj.traveltalk">
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
@@ -11,11 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.TravelTalk">
+        android:theme="@style/Theme.TravelTalk"
+        android:appComponentFactory="whateverString"
+        tools:replace="android:appComponentFactory">
 
         <meta-data
-            android:name="com.kakao.sdk.AppKey"
-            android:value="f5a297013d52460d548c09e221135743"/>
+            android:name="com.naver.maps.map.CLIENT_ID"
+            android:value="f654glu6ea"/>
 
         <activity android:name=".view.LoginActivity">
             <intent-filter>
@@ -24,9 +27,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.MainActivity">
-        </activity>
-        <activity android:name=".util.adapter.MapKey"/>
+        <activity android:name=".view.MainActivity"/>
+        <activity android:name=".view.JoinActivity"/>
     </application>
 
 </manifest>

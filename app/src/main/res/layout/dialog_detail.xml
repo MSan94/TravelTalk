@@ -54,6 +54,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout_section1">
 
         <TextView
+            android:id="@+id/address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -101,8 +102,8 @@
         android:layout_height="200dp"
         android:orientation="horizontal">
 
-        <RelativeLayout
-            android:id="@+id/map_view"
+        <com.naver.maps.map.MapView
+            android:id="@+id/naverMap"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 

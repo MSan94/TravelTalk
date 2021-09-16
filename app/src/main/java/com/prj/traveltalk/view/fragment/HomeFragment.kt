@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.prj.traveltalk.contract.HomeContract
@@ -18,6 +19,7 @@ import com.prj.traveltalk.presenter.LoginPresenter
 import com.prj.traveltalk.util.`interface`.OnItemClick
 import com.prj.traveltalk.util.adapter.ModelAdapter
 import com.prj.traveltalk.util.model.ModelItem
+import com.prj.traveltalk.view.dialog.DetailFragmentDialog
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import java.util.*
@@ -55,7 +57,7 @@ class HomeFragment() : Fragment() , HomeContract.View, OnItemClick{
 
 
     override fun initRecyclerView() {
-        val adapter = ModelAdapter()
+        val adapter = ModelAdapter(this)
         adapter.listData = modelList
         thread(start = true) {
             binding.recyclerView.adapter = adapter
@@ -82,9 +84,25 @@ class HomeFragment() : Fragment() , HomeContract.View, OnItemClick{
     }
 
     /** 어댑터 아이템 클릭시 호출 이벤트트 **/
-    override fun onClick(value: String) {
-//        Log.d("TestString", "받은값 : $value")
+    override fun onClick(data : ModelItem) {
+        showDialog(data)
     }
 
+    fun showDialog(data : ModelItem){
+
+        val dialog : DialogFragment = DetailFragmentDialog()
+        fragmentManager?.let {
+            val args : Bundle = Bundle()
+            args.putString("title",data.data_title)
+            args.putString("category",data.category_name1)
+            args.putString("gugun",data.category_name3)
+            args.putString("address",data.user_address)
+            args.putString("telno",data.telno)
+            args.putString("homepage",data.user_homepage)
+            dialog.arguments = args
+            dialog.show(it,"dialog")
+        }
+
+    }
 
 }
