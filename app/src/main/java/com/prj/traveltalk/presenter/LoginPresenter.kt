@@ -16,13 +16,15 @@ class LoginPresenter : LoginContract.Presenter{
 
     override fun checkUser() {
         try {
-            mSocket = IO.socket("http://192.168.219.176:3000")
-            mSocket.connect()
-            Log.d("Connected", "OK")
-        }catch (e : URISyntaxException){
-            Log.d("Err", e.reason)
+//            mSocket = IO.socket("http://192.168.219.176:3000")
+//            mSocket.connect()
+//            Log.d("Connected", "OK")
+
+        }catch (e : Exception){
+            Log.d("Err", e.printStackTrace().toString())
         }
-
-
     }
+
+
+
 }
