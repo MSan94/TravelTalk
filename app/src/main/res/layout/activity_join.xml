@@ -43,64 +43,82 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:hint="비밀번호"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout_Nick"
+            android:inputType="textPassword"
+            app:layout_constraintBottom_toTopOf="@+id/editText_inputPw_Check"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText_inputId" />
+
+        <EditText
+            android:id="@+id/editText_inputPw_Check"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="비밀번호 체크"
+            android:inputType="textPassword"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout_Nick"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText_inputPw" />
 
         <LinearLayout
             android:id="@+id/linearLayout_Nick"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/textView_NickCheck"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText_inputPw"
-            app:layout_constraintBottom_toTopOf="@+id/textView_NickCheck"
-            android:orientation="horizontal">
+            app:layout_constraintTop_toBottomOf="@+id/editText_inputPw_Check">
 
             <EditText
-                android:layout_weight="2"
                 android:id="@+id/editText_inputNickName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="2"
                 android:hint="별명" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:layout_weight="5"
-                android:text="중복체크"
+                android:id="@+id/btn_CheckNick"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:text="중복체크" />
         </LinearLayout>
+
         <TextView
             android:id="@+id/textView_NickCheck"
-            android:text="사용가능한 닉네임 입니다."
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout_Nick"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout_Btn"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="사용가능한 닉네임 입니다."
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout_Btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout_Nick" />
 
         <LinearLayout
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_NickCheck"
             android:id="@+id/linearLayout_Btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_NickCheck">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:text="가입"
-                android:layout_weight="1"
+                android:id="@+id/btn_SignIn"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="가입" />
+
             <androidx.appcompat.widget.AppCompatButton
-                android:text="취소"
-                android:layout_weight="1"
+                android:id="@+id/btn_Cancel"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="취소" />
 
         </LinearLayout>
 

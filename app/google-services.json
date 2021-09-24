@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "550657328172",
+    "project_id": "traveltalk-90201",
+    "storage_bucket": "traveltalk-90201.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:550657328172:android:bcbfd20b458b5cd9807d89",
+        "android_client_info": {
+          "package_name": "com.prj.traveltalk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "550657328172-n4bk2t46vq4kdd4o5se05lnqu0lh4j74.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.prj.traveltalk",
+            "certificate_hash": "7c03c9220789b430f811646f91541aae046f15e8"
+          }
+        },
+        {
+          "client_id": "550657328172-t22p3a4kihh7l4jemtuvisprg6b15v85.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWzSLEmaxi5B5eAOeENjm-A5eaXCRCn_o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "550657328172-t22p3a4kihh7l4jemtuvisprg6b15v85.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
