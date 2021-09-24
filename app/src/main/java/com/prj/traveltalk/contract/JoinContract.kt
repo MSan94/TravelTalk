@@ -11,7 +11,7 @@ interface JoinContract {
         override fun init()
 
         fun sendUserData(model : UserDto) // 가입정보 전송
-        fun resultSignIn(result : Boolean)
+        fun resultSignIn(result : String)
     }
 
     interface Presenter : BasePresenter {

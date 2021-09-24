@@ -31,14 +31,15 @@ class JoinPresenter : JoinContract.Presenter {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Log.d("SignInEvent", "회원가입 이벤트 발생 _ 성공 : ${model.id}")
-                    view?.resultSignIn(true)
+                    view?.resultSignIn("1")
                 } else {
-                    Log.d("SignInEvent", "회원가입 이벤트 발생 _ 실패 : ${model.id}")
-                    view?.resultSignIn(false)
+                    Log.d("SignInEvent", "회원가입 이벤트 발생 _ 실패 _ 아이디 중복 : ${model.id}")
+                    view?.resultSignIn("2")
                 }
             }
             .addOnFailureListener {
                 Log.d("SignInEvent", "회원가입 이벤트 발생 _ 실패 : ${model.id}")
+                view?.resultSignIn("3")
             }
     }
 

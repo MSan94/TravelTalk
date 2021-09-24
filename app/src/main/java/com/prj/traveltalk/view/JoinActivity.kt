@@ -13,7 +13,7 @@ import com.prj.traveltalk.util.model.UserDto
 import kotlinx.coroutines.coroutineScope
 
 class JoinActivity : AppCompatActivity(), JoinContract.View {
-    val binding by lazy { ActivityJoinBinding.inflate(layoutInflater) }
+    private val binding by lazy { ActivityJoinBinding.inflate(layoutInflater) }
     override lateinit var presenter: JoinContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,24 +36,29 @@ class JoinActivity : AppCompatActivity(), JoinContract.View {
         }
     }
 
+    /** 정보 전송 **/
     override fun sendUserData(model: UserDto) {
         presenter.singIn(model)
     }
 
-    override fun resultSignIn(result : Boolean){
+    /** 회원가입 성공 여부 **/
+    override fun resultSignIn(result : String){
         when (result) {
-            true -> {
+            "1" -> {
                 Toast.makeText(this, "회원가입 성공... 로그인페이지로 이동합니다.", Toast.LENGTH_SHORT).show()
                 var intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
             }
-            false -> {
-                Toast.makeText(this, "회원가입 실패.", Toast.LENGTH_SHORT).show()
+            "2" -> {
+                Toast.makeText(this, "이미 존재하는 계정입니다.", Toast.LENGTH_SHORT).show()
+            }
+            "3" ->{
+                Toast.makeText(this, "장애가 발생하였습니다. 관리자에게 문의해주세요.", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-
+    /** 버튼 이벤트 **/
     private fun clickEvent(type: String) {
         when (type) {
             "1" -> {
@@ -104,4 +109,7 @@ class JoinActivity : AppCompatActivity(), JoinContract.View {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+    }
 }
