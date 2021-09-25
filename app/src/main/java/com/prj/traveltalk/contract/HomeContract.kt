@@ -9,7 +9,7 @@ interface HomeContract {
     interface View : BaseView<Presenter> {
         override fun init()
         fun initRecyclerView()
-        fun getData()
+        fun getData(search : String?)
     }
 
     interface Presenter : BasePresenter{

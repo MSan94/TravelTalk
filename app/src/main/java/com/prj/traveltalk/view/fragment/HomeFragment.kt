@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -40,19 +41,27 @@ class HomeFragment() : Fragment() , HomeContract.View, OnItemClick{
         presenter = HomePresenter()
         presenter.setView(this)
         presenter.setJob()
-        getData()
+        init()
+        getData(null)
         initRecyclerView()
 
-        binding.btnSelect.setOnClickListener {
-            Log.d("DialogTest","클릭")
-            getCategoryList()
-        }
 
 
         return binding.root
     }
 
     override fun init() {
+        binding.btnSelect.setOnClickListener {
+            getCategoryList()
+        }
+        binding.btnSearch.setOnClickListener {
+            if(binding.editTextFinder.text.isEmpty()){
+                Toast.makeText(activity, "검색어를 입력해주세요.", Toast.LENGTH_SHORT).show()
+            }else{
+                getData(binding.editTextFinder.text.toString())
+                initRecyclerView()
+            }
+        }
     }
 
 
@@ -65,10 +74,21 @@ class HomeFragment() : Fragment() , HomeContract.View, OnItemClick{
         }
     }
 
-    override fun getData() {
+    override fun getData(search : String?) {
         presenter.getData()
         Log.d("TestView", "끝남")
         modelList = presenter.returnList()
+
+        /** 개선필요 s **/
+        if(search != null){
+            for(i in 0 until modelList.size){
+                if(!(modelList[i].data_title).contains(search)){
+                    modelList.removeAt(i)
+                }
+            }
+        }
+        /** 개선필요 e **/
+
     }
 
     fun getCategoryList(){

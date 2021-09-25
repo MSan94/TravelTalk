@@ -36,7 +36,7 @@ class DetailFragmentDialog : DialogFragment() {
 
     override fun onResume() {
         super.onResume()
-        dialog?.window?.setLayout(750,1000)
+        dialog?.window?.setLayout(1300,1800)
     }
 
 }

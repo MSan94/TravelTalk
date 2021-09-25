@@ -4,21 +4,27 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
-        android:background="@color/black"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout_top"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout_bottom"
-        app:layout_constraintDimensionRatio="2:2"
+        app:layout_constraintDimensionRatio="3:2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="horizontal">
 
+        <TextView
+            android:id="@+id/textView_UserInfo"
+            android:layout_margin="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout_bottom"
         app:layout_constraintStart_toStartOf="parent"
