@@ -25,10 +25,10 @@ class LoginPresenter : LoginContract.Presenter{
                     if(task.isSuccessful){
                         Log.d("ResultLogin","성공")
                         val currentUser = auth.currentUser
-                        view?.resultLogin(currentUser)
+                        view?.resultLogin(currentUser,"1")
                     }else{
                         Log.d("ResultLogin","실패")
-                        view?.resultLogin(null)
+                        view?.resultLogin(null,"2")
                     }
                 }
         }catch (e : Exception){

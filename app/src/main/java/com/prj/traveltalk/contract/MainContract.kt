@@ -7,7 +7,7 @@ import com.prj.traveltalk.BaseView
 interface MainContract {
 
     interface View : BaseView<Presenter>{
-
+        fun logoutEvent()
     }
 
     interface Presenter : BasePresenter{

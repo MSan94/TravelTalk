@@ -7,6 +7,7 @@ import com.prj.traveltalk.util.model.ModelItem
 interface HomeContract {
 
     interface View : BaseView<Presenter> {
+        override fun init()
         fun initRecyclerView()
         fun getData()
     }
@@ -16,7 +17,6 @@ interface HomeContract {
         fun getData() // 레트로핏 데이터 파싱
         fun setJob() // 잡 설정
         fun cancelJob()  // 잡 취소
-
         fun returnList() : MutableList<ModelItem> // 리스트 반환
 
     }

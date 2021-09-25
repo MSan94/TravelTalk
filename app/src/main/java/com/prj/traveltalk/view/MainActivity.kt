@@ -1,9 +1,11 @@
 package com.prj.traveltalk.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 import com.prj.traveltalk.R
 import com.prj.traveltalk.contract.MainContract
 import com.prj.traveltalk.databinding.ActivityMainBinding
@@ -23,6 +25,7 @@ class MainActivity() : AppCompatActivity() , MainContract.View{
     private val homeFragment = HomeFragment()
     private val infoFragment = InfoFragment()
     private val myFragment = MyFragment()
+    private var auth: FirebaseAuth = FirebaseAuth.getInstance()
     lateinit var bottomNavigationView : BottomNavigationView
 
 
@@ -69,5 +72,12 @@ class MainActivity() : AppCompatActivity() , MainContract.View{
                 commit()
             }
     }
+
+    override fun logoutEvent() {
+        auth.signOut()
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+    }
+
 
 }

@@ -16,7 +16,7 @@ import com.prj.traveltalk.util.model.UserDto
 import com.prj.traveltalk.view.dialog.DetailFragmentDialog
 
 
-class LoginActivity : AppCompatActivity(), LoginContract.View{
+class LoginActivity : AppCompatActivity(), LoginContract.View {
     val binding by lazy { ActivityLoginBinding.inflate(layoutInflater) }
     override lateinit var presenter: LoginContract.Presenter
     var auth: FirebaseAuth = FirebaseAuth.getInstance()
@@ -38,8 +38,8 @@ class LoginActivity : AppCompatActivity(), LoginContract.View{
     }
 
     /** 버튼 이벤트 **/
-    private fun btnClickEvent(type: Int){
-        when(type){
+    private fun btnClickEvent(type: Int) {
+        when (type) {
             1 -> {
                 val intent = Intent(this, JoinActivity::class.java)
                 goActivity(intent)
@@ -55,37 +55,44 @@ class LoginActivity : AppCompatActivity(), LoginContract.View{
     }
 
     /** 액티비티 전환 **/
-    fun goActivity(intent : Intent){
+    fun goActivity(intent: Intent) {
         startActivity(intent)
     }
 
 
     /** 계정 유효성 검사 **/
     override fun checkValid() {
-        if(binding.editTextId.length() < 5){
-            Toast.makeText(this,"아이디를 정확하게 입력해주세요.", Toast.LENGTH_SHORT).show()
+        if (binding.editTextId.length() < 5) {
+            Toast.makeText(this, "아이디를 정확하게 입력해주세요.", Toast.LENGTH_SHORT).show()
             return
         }
-        if(binding.editTextPw.length() < 5){
-            Toast.makeText(this,"패스워드를 정확하게 입력해주세요.", Toast.LENGTH_SHORT).show()
+        if (binding.editTextPw.length() < 5) {
+            Toast.makeText(this, "패스워드를 정확하게 입력해주세요.", Toast.LENGTH_SHORT).show()
             return
         }
-        var model = UserDto(binding.editTextId.text.toString().trim(), binding.editTextPw.text.toString().trim(),"")
+        var model = UserDto(
+            binding.editTextId.text.toString().trim(),
+            binding.editTextPw.text.toString().trim(),
+            ""
+        )
         presenter.checkUser(model)
     }
 
-    override fun resultLogin(currentUser : FirebaseUser?) {
-        when(currentUser){
+    override fun resultLogin(currentUser: FirebaseUser?, type: String) {
+        when (currentUser) {
             null -> {
-                Toast.makeText(this,"계정 정보를 확인해주세요.", Toast.LENGTH_SHORT).show()
+                if(type == "2") {
+                    Toast.makeText(this,"계정 정보를 확인해주세요.", Toast.LENGTH_SHORT).show()
+                }
             }
-            else ->{
+            else -> {
                 var intent = Intent(this, MainActivity::class.java)
-                Toast.makeText(this,"로그인 되었습니다.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "로그인 되었습니다.", Toast.LENGTH_SHORT).show()
                 binding.btnGuest.isEnabled = false
                 binding.btnJoin.isEnabled = false
                 binding.btnLogin.isEnabled = false
                 startActivity(intent)
+
             }
         }
     }
@@ -94,13 +101,13 @@ class LoginActivity : AppCompatActivity(), LoginContract.View{
     override fun onResume() {
         super.onResume()
         val currentUser = auth?.currentUser
-        resultLogin(currentUser)
+        resultLogin(currentUser, "1")
     }
 
     override fun onStart() {
         super.onStart()
         val currentUser = auth?.currentUser
-        resultLogin(currentUser)
+        resultLogin(currentUser, "1")
     }
 
 }
