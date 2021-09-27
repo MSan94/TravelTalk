@@ -8,8 +8,9 @@ interface HomeContract {
 
     interface View : BaseView<Presenter> {
         override fun init()
-        fun initRecyclerView()
-        fun getData(search : String?)
+        fun initRecyclerView(searchOn : String?)
+        fun getData()
+        fun searchData(search: String?)
     }
 
     interface Presenter : BasePresenter{
